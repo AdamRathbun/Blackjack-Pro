@@ -49,6 +49,7 @@ function getCardDetails(){
         return fetch(url)
         .then(res => res.json()) 
         .then(data => {
+        console.log(data)
         return data
         
         })
@@ -105,11 +106,35 @@ async function hit(){
       dealerArr.push(data.cards[1].value,data.cards[3].value)
       playerSum=getHandValue(playerArr)
       dealerSum=getHandValue(dealerArr)
+
+      const imgA=document.createElement('img')                   // new
+      imgA.src=data.cards[0].image
+      imgA.class='playerCard'
+      document.querySelector('.player-hand').appendChild(imgA)
+      const imgA2=document.createElement('img')                   
+      imgA2.src=data.cards[2].image
+      imgA2.class='playerCard'
+      document.querySelector('.player-hand').appendChild(imgA2)
+
+      const imgA3=document.createElement('img')                   
+      imgA3.src=data.cards[1].image
+      document.getElementById('dhand').appendChild(imgA3)
+      //document.querySelector(imgA3).style.display='none'
+      const imgA4=document.createElement('img')                   
+      imgA4.src=data.cards[3].image
+      document.getElementById('dhand').appendChild(imgA4)
+      //document.querySelector(imgA4).style.display='none'
+
     }else if (playerArr.length!==0 && playerSum<21){
       let data= await getCardDetails()
       playerArr.push(data.cards[0].value)
     
       playerSum=getHandValue(playerArr)
+
+      const imgA=document.createElement('img')                   
+      imgA.src=data.cards[0].image
+      imgA.class='playerCard'
+      document.querySelector('.player-hand').appendChild(imgA)
 
     }else if (playerArr.length!==0 && playerSum>21){
         alert('You already busted, idiot.')
@@ -120,10 +145,21 @@ async function hit(){
 document.querySelector('.standBtn').addEventListener('click', stand)
 
 async function stand(){
+/*
+    document.querySelector(imgA3).style.display='block'
+    document.querySelector(imgA4).style.display='block'
+*/
+    document.getElementById('dhand').classList.toggle('dealer-hand')
+
     while (dealerSum<17){
         let data= await getCardDetails()   //look up at this function but basically it is forcing the async API data to complete and then move onto the next thing (before, with a while loop, it just kept giving me the data before implementing any change and thereby causing an infinite loop)
         dealerArr.push(data.cards[0].value) //this data is referring to the local variable data
         dealerSum=getHandValue(dealerArr)
+
+        const imgA3=document.createElement('img')                   
+        imgA3.src=data.cards[0].image
+        document.getElementById('dhand').appendChild(imgA3)
+
     }
     console.log(`Dealer hand is ${dealerSum}`)
     if (playerSum<=21 && (21-playerSum)<(21-dealerSum)){   //should this be just an "if" statement?
@@ -146,6 +182,9 @@ function newHand(){
     dealerArr=[]
     playerSum=0
     dealerSum=0
+    document.getElementById('phand').innerHTML=''
+    document.getElementById('dhand').innerHTML=''
+    document.getElementById('dhand').classList.toggle('dealer-hand')
     fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
       .then(res => res.json()) // parse response as JSON
       .then(data => {

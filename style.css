@@ -14,3 +14,9 @@
     background-color: grey;
     color: white;
 }
+.dealer-hand {
+    display: none;
+}
+.topS{
+    margin-top: 90px;
+}
