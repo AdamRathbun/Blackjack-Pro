@@ -166,9 +166,11 @@ async function stand(){
         alert('Player wins')
     }else if (dealerSum<=21 && (21-playerSum)>(21-dealerSum)){
         alert('Jack Blackjack wins')
-    }else if (playerSum===dealerSum && (playerArr.length<playerArr.length)){
+    }else if (playerSum===dealerSum && (playerArr.length===dealerArr.length)){
+        alert('You drawed')
+    }else if (playerSum===dealerSum && (playerArr.length<dealerArr.length)){
         alert('Player wins')
-    }else if (playerSum===dealerSum && (playerArr.length>playerArr.length)){
+    }else if (playerSum===dealerSum && (playerArr.length>dealerArr.length)){
         alert('Jack Blackjack wins')
     }else if (playerSum===dealerSum && (playerSum>21 && dealerSum>21)){
         alert('You both busted')
