@@ -59,7 +59,7 @@ function getCardDetails(){
 }
 
 function getHandValue(arr){
-    let aceConverted=0
+    let aceConverted=0     //counting number of aces that turn from 11 to 1
     let sum=0
     for (let i=0; i<arr.length; i++){
         if (arr[i]==='ACE'){
@@ -70,9 +70,9 @@ function getHandValue(arr){
             sum+=Number(arr[i])
         }
         if (sum>21){
-            aceTotal=0
+            aceTotal=0      //note that I have to have aceConverted at the top, outside of this
             for (let j=0; j<arr.length; j++){   //note I use j instead of i here b.c they have to be diff variables
-                if (arr[j]==='ACE') {
+                if (arr[j]==='ACE') {     
                     aceTotal+=1
                 }
                 if (aceTotal>aceConverted) {
@@ -149,7 +149,9 @@ async function stand(){
     document.querySelector(imgA3).style.display='block'
     document.querySelector(imgA4).style.display='block'
 */
-    document.getElementById('dhand').classList.toggle('dealer-hand')
+
+    document.getElementById('jb').classList.add('dealer-hand')
+    document.getElementById('dhand').classList.remove('dealer-hand')
 
     while (dealerSum<17){
         let data= await getCardDetails()   //look up at this function but basically it is forcing the async API data to complete and then move onto the next thing (before, with a while loop, it just kept giving me the data before implementing any change and thereby causing an infinite loop)
@@ -190,7 +192,8 @@ function newHand(){
     dealerSum=0
     document.getElementById('phand').innerHTML=''
     document.getElementById('dhand').innerHTML=''
-    document.getElementById('dhand').classList.toggle('dealer-hand')
+    document.getElementById('jb').classList.remove('dealer-hand')
+    document.getElementById('dhand').classList.add('dealer-hand')
     fetch('https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
       .then(res => res.json()) // parse response as JSON
       .then(data => {
