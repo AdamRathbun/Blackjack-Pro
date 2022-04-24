@@ -7,17 +7,16 @@ fetch a new deck (shuffle)
 on first hit, deal 2 cards to player and dealer (can check for playerArr.length===0)
 put the value of each card into an array as array values for playerArr and dealerArr
 make playerSum and dealerSum for the total values of each hand from adding the array
-there's two counters when an ace comes up. one counter treats the ace as 1 and one as 11: 
-    aceCounter1 and aceCounter2 (for 11). if aceCounter2's total value exceeds 21, somehow make it die
+if there's any ace(s) and the total value exceeds 21, change Ace(s)' value to 1 from 11 (default)
 the player hand is shown as images while the dealer hand only shows the back of the cards
 
 on subsequent hit, deal one card to player and IF, dealerSum<17, deal one card to dealer
 again add the value(s) to playerArr and dealerArr
-repeat step with aceCounter1 & 2
 
 on stand, show dealer card images and determine winner
 also get a new deck ID
 
+on new hand, clear everything and bring back Jack Black
 */
 
 let playerArr=[]
