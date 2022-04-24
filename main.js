@@ -139,7 +139,7 @@ async function hit(){
     }else if (playerArr.length!==0 && playerSum>21){
         alert('You already busted, idiot.')
     }
-    console.log(`Player hand is ${playerSum}`)
+    console.log(`Player hand is ${playerSum}`) 
 }
 
 document.querySelector('.standBtn').addEventListener('click', stand)
@@ -166,8 +166,12 @@ async function stand(){
         alert('Player wins')
     }else if (dealerSum<=21 && (21-playerSum)>(21-dealerSum)){
         alert('Jack Blackjack wins')
-    }else if (playerSum===dealerSum || (playerSum>21 && dealerSum>21)){
-        alert('You drawed')
+    }else if (playerSum===dealerSum && (playerArr.length<playerArr.length)){
+        alert('Player wins')
+    }else if (playerSum===dealerSum && (playerArr.length>playerArr.length)){
+        alert('Jack Blackjack wins')
+    }else if (playerSum===dealerSum && (playerSum>21 && dealerSum>21)){
+        alert('You both busted')
     }else if (playerSum>21 && dealerSum<=21){
         alert('Jack Blackjack wins')
     }else if (playerSum<=21 && dealerSum>21){
