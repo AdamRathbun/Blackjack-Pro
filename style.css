@@ -78,3 +78,14 @@ button {
     color: white;
 }
 */
+
+/* background */
+body {
+    background: url('bg.jpeg') no-repeat center;
+    background-size: cover;
+}
+
+/* texts */
+h2 {
+    color: white;
+}
