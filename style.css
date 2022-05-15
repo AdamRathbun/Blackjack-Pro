@@ -11,11 +11,12 @@
     display: none;
 }
 .topS{
-    margin-top: 90px;
+    margin-top: 80px;
 }
 .default-pic{
     height: 300px;
 }
+
 
 /* From uiverse.io by @Botwe-Felix5820 */
 button {
@@ -89,3 +90,72 @@ body {
 h2 {
     color: white;
 }
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+body,html{
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+.hero-nav{
+    position: fixed;
+    top: -160px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    min-height: 105px;
+}
+h1{
+    color: #5CAF80;
+    font-size: 2.5vw;
+    -webkit-text-stroke-width: .8px;
+    -webkit-text-stroke-color: white;
+}
+
+img {
+    display: inline-block;
+    margin: auto;
+    width: 50%;
+    height: 18vw;
+    width: auto;
+}
+.addBot{
+    margin-bottom: 400px;
+}
+
+@media (max-width: 768px) {
+    .default-pic{
+        height: 180px;
+    }
+    .initial{
+        margin-top: 100px;
+    }
+    img {
+        display: inline-block;
+        margin: auto;
+        width: 50%;
+        height: 40vw;
+        width: auto;
+    }
+    h1{
+        color: #5CAF80;
+        font-size: 7vw;
+        -webkit-text-stroke-width: .8px;
+        -webkit-text-stroke-color: white;
+    }
+    .topS{
+        margin-top: 20px;
+    }
+    button {
+        height: 2em;
+        width: 7.6em;
+       }
+    body {
+        background: url('bg.jpeg') center;
+        background-size: cover;
+    }
+  }
